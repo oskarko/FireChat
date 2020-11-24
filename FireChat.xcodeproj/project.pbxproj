@@ -17,6 +17,8 @@
 		E231D517256D03BF00347073 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231D516256D03BF00347073 /* LoginController.swift */; };
 		E231D51B256D03CD00347073 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231D51A256D03CD00347073 /* RegistrationController.swift */; };
 		E231D51E256D074200347073 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231D51D256D074200347073 /* Extensions.swift */; };
+		E231D522256D28A800347073 /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231D521256D28A800347073 /* InputContainerView.swift */; };
+		E231D525256D2B3900347073 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231D524256D2B3900347073 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		E231D516256D03BF00347073 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E231D51A256D03CD00347073 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		E231D51D256D074200347073 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E231D521256D28A800347073 /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
+		E231D524256D2B3900347073 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 		E231D50F256CDA2800347073 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E231D521256D28A800347073 /* InputContainerView.swift */,
+				E231D524256D2B3900347073 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,12 +213,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E231D4FA256CDA1400347073 /* ViewController.swift in Sources */,
+				E231D522256D28A800347073 /* InputContainerView.swift in Sources */,
 				E231D4F6256CDA1400347073 /* AppDelegate.swift in Sources */,
 				E231D512256CDA8300347073 /* ConversationsController.swift in Sources */,
 				E231D4F8256CDA1400347073 /* SceneDelegate.swift in Sources */,
 				E231D51B256D03CD00347073 /* RegistrationController.swift in Sources */,
 				E231D517256D03BF00347073 /* LoginController.swift in Sources */,
 				E231D51E256D074200347073 /* Extensions.swift in Sources */,
+				E231D525256D2B3900347073 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
