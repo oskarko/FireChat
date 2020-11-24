@@ -14,6 +14,9 @@
 		E231D4FF256CDA1500347073 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E231D4FE256CDA1500347073 /* Assets.xcassets */; };
 		E231D502256CDA1500347073 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E231D500256CDA1500347073 /* LaunchScreen.storyboard */; };
 		E231D512256CDA8300347073 /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231D511256CDA8300347073 /* ConversationsController.swift */; };
+		E231D517256D03BF00347073 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231D516256D03BF00347073 /* LoginController.swift */; };
+		E231D51B256D03CD00347073 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231D51A256D03CD00347073 /* RegistrationController.swift */; };
+		E231D51E256D074200347073 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231D51D256D074200347073 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		E231D501256CDA1500347073 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E231D503256CDA1500347073 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E231D511256CDA8300347073 /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
+		E231D516256D03BF00347073 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		E231D51A256D03CD00347073 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		E231D51D256D074200347073 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 		E231D50A256CDA1F00347073 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E231D51D256D074200347073 /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -92,6 +99,7 @@
 		E231D50D256CDA2300347073 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E231D515256D03AF00347073 /* Authentication */,
 				E231D511256CDA8300347073 /* ConversationsController.swift */,
 			);
 			path = Controller;
@@ -116,6 +124,15 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E231D515256D03AF00347073 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E231D516256D03BF00347073 /* LoginController.swift */,
+				E231D51A256D03CD00347073 /* RegistrationController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +163,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
+				ORGANIZATIONNAME = "Little Monster";
 				TargetAttributes = {
 					E231D4F1256CDA1400347073 = {
 						CreatedOnToolsVersion = 12.2;
@@ -192,6 +210,9 @@
 				E231D4F6256CDA1400347073 /* AppDelegate.swift in Sources */,
 				E231D512256CDA8300347073 /* ConversationsController.swift in Sources */,
 				E231D4F8256CDA1400347073 /* SceneDelegate.swift in Sources */,
+				E231D51B256D03CD00347073 /* RegistrationController.swift in Sources */,
+				E231D517256D03BF00347073 /* LoginController.swift in Sources */,
+				E231D51E256D074200347073 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
