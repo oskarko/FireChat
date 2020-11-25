@@ -157,11 +157,13 @@ class RegistrationController: UIViewController {
                                 "uid": uid,
                                 "username": username] as [String: Any]
 
-                    Firestore.firestore().collection("users").document(uid).setData(data) { error in
+                    Firestore.firestore().collection("users").document(uid).setData(data) { [weak self] error in
                         if let error = error {
                             print("DEBUG: Error updating user \(error.localizedDescription)")
                             return
                         }
+
+                        self?.dismiss(animated: true, completion: nil)
                     }
                 }
             }
