@@ -131,7 +131,12 @@ extension ConversationsController: UITableViewDataSource {
 
         return cell
     }
-
-
 }
 
+extension ConversationsController: NewMessageControllerDelegate {
+    func controller(_ controller: NewMessageController, wantsToStartChatWith user: User) {
+        controller.dismiss(animated: true, completion: nil)
+        let chat = ChatController(user: user)
+        navigationController?.pushViewController(chat, animated: true)
+    }
+}

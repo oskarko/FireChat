@@ -25,6 +25,7 @@
 		E2623FE0256E922A00CAD244 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2623FDF256E922A00CAD244 /* UserCell.swift */; };
 		E2623FE3256E970500CAD244 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2623FE2256E970400CAD244 /* User.swift */; };
 		E2623FE6256E977400CAD244 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2623FE5256E977400CAD244 /* Service.swift */; };
+		E2624001256EA03400CAD244 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2624000256EA03400CAD244 /* ChatController.swift */; };
 		E2624786256E6BE00084535C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2624785256E6BE00084535C /* AuthService.swift */; };
 		E28D6C91256E3220008C35C6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D6C90256E3220008C35C6 /* LoginViewModel.swift */; };
 		E28D6C94256E4D96008C35C6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D6C93256E4D96008C35C6 /* RegistrationViewModel.swift */; };
@@ -53,6 +54,7 @@
 		E2623FDF256E922A00CAD244 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E2623FE2256E970400CAD244 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E2623FE5256E977400CAD244 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		E2624000256EA03400CAD244 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		E2624785256E6BE00084535C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E28D6C90256E3220008C35C6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E28D6C93256E4D96008C35C6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				E231D515256D03AF00347073 /* Authentication */,
 				E231D511256CDA8300347073 /* ConversationsController.swift */,
 				E2623FD8256E7E0900CAD244 /* NewMessageController.swift */,
+				E2624000256EA03400CAD244 /* ChatController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				E231D517256D03BF00347073 /* LoginController.swift in Sources */,
 				E231D51E256D074200347073 /* Extensions.swift in Sources */,
 				E28D6C91256E3220008C35C6 /* LoginViewModel.swift in Sources */,
+				E2624001256EA03400CAD244 /* ChatController.swift in Sources */,
 				E231D525256D2B3900347073 /* CustomTextField.swift in Sources */,
 				E2623FD9256E7E0900CAD244 /* NewMessageController.swift in Sources */,
 			);
