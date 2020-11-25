@@ -11,6 +11,8 @@ class LoginController: UIViewController {
 
     // MARK: - Properties
 
+    private var viewModel = LoginViewModel()
+
     private let iconImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "bubble.right")
@@ -37,6 +39,8 @@ class LoginController: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         button.setTitleColor(.white, for: .normal)
         button.setHeight(height: 50)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
 
@@ -75,7 +79,26 @@ class LoginController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
 
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+
+        checkFormStatus()
+    }
+
+    @objc func handleLogin() {
+
+    }
+
     // MARK: - Helpers
+
+    private func checkFormStatus() {
+        loginButton.isEnabled = viewModel.formIsValid
+        loginButton.backgroundColor = viewModel.formIsValid ? #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1) : #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+    }
 
     private func configureUI() {
         navigationController?.navigationBar.isHidden = true
@@ -109,6 +132,9 @@ class LoginController: UIViewController {
                                      right: view.rightAnchor,
                                      paddingLeft: 32,
                                      paddingRight: 32)
+
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
 }
