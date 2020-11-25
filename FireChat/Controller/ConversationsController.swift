@@ -86,14 +86,15 @@ class ConversationsController: UIViewController {
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(showProfile))
+        configureTableView()
+        
         view.addSubview(newMessageButton)
         newMessageButton.setDimensions(height: 56, width: 56)
         newMessageButton.layer.cornerRadius = 56 / 2
         newMessageButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                                right: view.rightAnchor,
+                                right: view.safeAreaLayoutGuide.rightAnchor,
                                 paddingBottom: 16,
                                 paddingRight: 24)
-        configureTableView()
     }
 
     private func configureTableView() {
