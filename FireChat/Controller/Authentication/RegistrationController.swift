@@ -11,12 +11,17 @@ class RegistrationController: UIViewController {
 
     // MARK: - Properties
 
+    private var viewModel = RegistrationViewModel()
+
+    private let imagePicker = UIImagePickerController()
+    private var profileImage: UIImage?
+
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
         button.tintColor = .white
         button.addTarget(self,
-                         action: #selector(handleSelectorPhoto),
+                         action: #selector(handleAddProfilePhoto),
                          for: .touchUpInside)
         return button
     }()
@@ -62,6 +67,8 @@ class RegistrationController: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         button.setTitleColor(.white, for: .normal)
         button.setHeight(height: 50)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
         return button
     }()
 
@@ -82,24 +89,46 @@ class RegistrationController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureUI()
-
+        configureNotificationObservers()
     }
 
     // MARK: - Selectors
 
-    @objc func handleSelectorPhoto() {
+    @objc func handleAddProfilePhoto() {
+        present(imagePicker, animated: true, completion: nil)
+    }
 
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        }
+        else if sender == nameTextField {
+            viewModel.fullName = sender.text
+        }
+        else if sender == usernameTextField {
+            viewModel.username = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+
+        checkFormStatus()
     }
 
     @objc func handleShowLogIn() {
         navigationController?.popViewController(animated: true)
     }
 
+    @objc func handleSignup() {
+
+    }
+
     // MARK: - Helpers
 
     private func configureUI() {
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+
         configureGradientLayer()
 
         view.addSubview(plusPhotoButton)
@@ -131,5 +160,40 @@ class RegistrationController: UIViewController {
                                      paddingLeft: 32,
                                      paddingRight: 32)
     }
+
+    private func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        nameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
     
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let profileImage = info[.editedImage] as? UIImage else { return }
+
+        self.profileImage = profileImage
+
+        plusPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        plusPhotoButton.layer.borderColor = UIColor.white.cgColor
+        plusPhotoButton.layer.borderWidth = 3.0
+        plusPhotoButton.layer.cornerRadius = 200 / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.imageView?.contentMode = .scaleAspectFill
+        plusPhotoButton.imageView?.clipsToBounds = true
+
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension RegistrationController: AuthenticationControllerProtocol {
+
+    func checkFormStatus() {
+        signupButton.isEnabled = viewModel.formIsValid
+        signupButton.backgroundColor = viewModel.formIsValid ? #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1) : #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+    }
 }

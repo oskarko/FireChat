@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AuthenticationControllerProtocol {
+    func checkFormStatus()
+}
+
 class LoginController: UIViewController {
 
     // MARK: - Properties
@@ -70,6 +74,7 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureNotificationObservers()
     }
 
     // MARK: - Selectors
@@ -94,11 +99,6 @@ class LoginController: UIViewController {
     }
 
     // MARK: - Helpers
-
-    private func checkFormStatus() {
-        loginButton.isEnabled = viewModel.formIsValid
-        loginButton.backgroundColor = viewModel.formIsValid ? #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1) : #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-    }
 
     private func configureUI() {
         navigationController?.navigationBar.isHidden = true
@@ -132,9 +132,18 @@ class LoginController: UIViewController {
                                      right: view.rightAnchor,
                                      paddingLeft: 32,
                                      paddingRight: 32)
+    }
 
+    private func configureNotificationObservers() {
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
-    
+}
+
+extension LoginController: AuthenticationControllerProtocol {
+
+    func checkFormStatus() {
+        loginButton.isEnabled = viewModel.formIsValid
+        loginButton.backgroundColor = viewModel.formIsValid ? #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1) : #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+    }
 }
