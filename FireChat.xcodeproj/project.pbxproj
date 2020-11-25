@@ -23,6 +23,8 @@
 		E2623FD9256E7E0900CAD244 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2623FD8256E7E0900CAD244 /* NewMessageController.swift */; };
 		E2623FDD256E835000CAD244 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2623FDC256E835000CAD244 /* GoogleService-Info.plist */; };
 		E2623FE0256E922A00CAD244 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2623FDF256E922A00CAD244 /* UserCell.swift */; };
+		E2623FE3256E970500CAD244 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2623FE2256E970400CAD244 /* User.swift */; };
+		E2623FE6256E977400CAD244 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2623FE5256E977400CAD244 /* Service.swift */; };
 		E2624786256E6BE00084535C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2624785256E6BE00084535C /* AuthService.swift */; };
 		E28D6C91256E3220008C35C6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D6C90256E3220008C35C6 /* LoginViewModel.swift */; };
 		E28D6C94256E4D96008C35C6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D6C93256E4D96008C35C6 /* RegistrationViewModel.swift */; };
@@ -49,6 +51,8 @@
 		E2623FD8256E7E0900CAD244 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		E2623FDC256E835000CAD244 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E2623FDF256E922A00CAD244 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		E2623FE2256E970400CAD244 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E2623FE5256E977400CAD244 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E2624785256E6BE00084535C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E28D6C90256E3220008C35C6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E28D6C93256E4D96008C35C6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				E2624785256E6BE00084535C /* AuthService.swift */,
+				E2623FE5256E977400CAD244 /* Service.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 		E231D510256CDA2B00347073 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E2623FE2256E970400CAD244 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -315,6 +321,8 @@
 				E231D512256CDA8300347073 /* ConversationsController.swift in Sources */,
 				E2623FE0256E922A00CAD244 /* UserCell.swift in Sources */,
 				E231D4F8256CDA1400347073 /* SceneDelegate.swift in Sources */,
+				E2623FE3256E970500CAD244 /* User.swift in Sources */,
+				E2623FE6256E977400CAD244 /* Service.swift in Sources */,
 				E231D51B256D03CD00347073 /* RegistrationController.swift in Sources */,
 				E231D517256D03BF00347073 /* LoginController.swift in Sources */,
 				E231D51E256D074200347073 /* Extensions.swift in Sources */,

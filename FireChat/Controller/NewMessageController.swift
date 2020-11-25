@@ -20,6 +20,13 @@ class NewMessageController: UITableViewController {
         super.viewDidLoad()
         configureNavigationBar(withTitle: "New Message", prefersLargeTitles: false)
         configureUI()
+        fetchUsers()
+    }
+
+    // MARK: - Helpers
+
+    private func fetchUsers() {
+        Service.shared.fetchUsers()
     }
 
     // MARK: - Selectors
