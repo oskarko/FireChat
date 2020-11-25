@@ -38,7 +38,7 @@ struct AuthService {
 
         ref.putData(imageData, metadata: nil) { (meta, error) in
             if let error = error {
-                print("DEBUG: Error uploading profile image \(error.localizedDescription)")
+                completion(error)
                 return
             }
 
@@ -48,7 +48,7 @@ struct AuthService {
                 Auth.auth().createUser(withEmail: credentials.email,
                                        password: credentials.password) { (result, error) in
                     if let error = error {
-                        print("DEBUG: Error creating user \(error.localizedDescription)")
+                        completion(error)
                         return
                     }
 

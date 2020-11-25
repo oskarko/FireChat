@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class RegistrationController: UIViewController {
 
@@ -135,16 +136,29 @@ class RegistrationController: UIViewController {
                                                   username: username,
                                                   profileImage: profileImage)
 
+        showLoader(true, withText: "Signing You Up")
+
         AuthService.shared.createUser(withCredentials: credentials) { [weak self] error in
-            guard let strongSelf = self else { return }
+            self?.showLoader(false)
 
             if let error = error {
                 print("DEBUG: \(error.localizedDescription)")
                 return
             }
-            strongSelf.dismiss(animated: true, completion: nil)
+            self?.dismiss(animated: true, completion: nil)
         }
+    }
 
+    @objc func keyboardWillShow() {
+        if view.frame.origin.y == 0 {
+            view.frame.origin.y -= 88
+        }
+    }
+
+    @objc func keyboardWillHide() {
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
+        }
     }
 
     // MARK: - Helpers
@@ -190,6 +204,14 @@ class RegistrationController: UIViewController {
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         nameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     
 }
