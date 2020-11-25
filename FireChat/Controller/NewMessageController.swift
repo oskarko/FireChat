@@ -14,6 +14,10 @@ class NewMessageController: UITableViewController {
 
     // MARK: - Properties
 
+    private var users = [User]() {
+        didSet { tableView.reloadData() }
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -26,7 +30,9 @@ class NewMessageController: UITableViewController {
     // MARK: - Helpers
 
     private func fetchUsers() {
-        Service.shared.fetchUsers()
+        Service.shared.fetchUsers { users in
+            self.users = users
+        }
     }
 
     // MARK: - Selectors
@@ -62,7 +68,7 @@ extension NewMessageController {
 
 extension NewMessageController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return users.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
