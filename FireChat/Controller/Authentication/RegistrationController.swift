@@ -124,49 +124,25 @@ class RegistrationController: UIViewController {
 
     @objc func handleSignup() {
         guard let email = emailTextField.text else { return }
-        guard let fullName = nameTextField.text else { return }
+        guard let fullname = nameTextField.text else { return }
         guard let username = usernameTextField.text?.lowercased() else { return }
         guard let password = passwordTextField.text else { return }
         guard let profileImage = profileImage else { return }
 
-        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        let credentials = RegistrationCredentials(email: email,
+                                                  password: password,
+                                                  fullname: fullname,
+                                                  username: username,
+                                                  profileImage: profileImage)
 
-        let filename = NSUUID().uuidString
-        let ref = Storage.storage().reference(withPath: "/profile_images/\(filename)")
+        AuthService.shared.createUser(withCredentials: credentials) { [weak self] error in
+            guard let strongSelf = self else { return }
 
-        ref.putData(imageData, metadata: nil) { (meta, error) in
             if let error = error {
-                print("DEBUG: Error uploading profile image \(error.localizedDescription)")
+                print("DEBUG: \(error.localizedDescription)")
                 return
             }
-
-            ref.downloadURL { (url, error) in
-                guard let profileImageUrl = url?.absoluteString else { return }
-
-                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                    if let error = error {
-                        print("DEBUG: Error creating user \(error.localizedDescription)")
-                        return
-                    }
-
-                    guard let uid = result?.user.uid else { return }
-
-                    let data = ["email": email,
-                                "fullname": fullName,
-                                "profileImageUrl": profileImageUrl,
-                                "uid": uid,
-                                "username": username] as [String: Any]
-
-                    Firestore.firestore().collection("users").document(uid).setData(data) { [weak self] error in
-                        if let error = error {
-                            print("DEBUG: Error updating user \(error.localizedDescription)")
-                            return
-                        }
-
-                        self?.dismiss(animated: true, completion: nil)
-                    }
-                }
-            }
+            strongSelf.dismiss(animated: true, completion: nil)
         }
 
     }
