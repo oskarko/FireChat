@@ -17,6 +17,10 @@ struct Message {
 
     let isFromCurrentUser: Bool
 
+    var chatPartnerId: String {
+        return Auth.auth().currentUser?.uid == fromId ? toId : fromId
+    }
+
     init(dictionary: [String: Any]) {
         text = dictionary["text"] as? String ?? ""
         toId = dictionary["toId"] as? String ?? ""
@@ -24,8 +28,6 @@ struct Message {
         timesstamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
 
         isFromCurrentUser = fromId == Auth.auth().currentUser?.uid
-
-
     }
 }
 

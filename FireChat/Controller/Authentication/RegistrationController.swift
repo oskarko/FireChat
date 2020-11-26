@@ -13,6 +13,7 @@ class RegistrationController: UIViewController {
 
     // MARK: - Properties
 
+    weak var delegate: AuthenticationDelegate?
     private var viewModel = RegistrationViewModel()
 
     private let imagePicker = UIImagePickerController()
@@ -147,7 +148,9 @@ class RegistrationController: UIViewController {
                 print("DEBUG: \(error.localizedDescription)")
                 return
             }
-            strongSelf.dismiss(animated: true, completion: nil)
+            strongSelf.dismiss(animated: true) {
+                strongSelf.delegate?.authenticationComplete()
+            }
         }
     }
 

@@ -13,10 +13,15 @@ protocol AuthenticationControllerProtocol {
     func checkFormStatus()
 }
 
+protocol AuthenticationDelegate: class {
+    func authenticationComplete()
+}
+
 class LoginController: UIViewController {
 
     // MARK: - Properties
 
+    weak var delegate: AuthenticationDelegate?
     private var viewModel = LoginViewModel()
 
     private let iconImage: UIImageView = {
@@ -83,6 +88,7 @@ class LoginController: UIViewController {
 
     @objc func handleShowSignUp() {
         let controller = RegistrationController()
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -112,7 +118,9 @@ class LoginController: UIViewController {
                 print("DEBUG: Failed to login with error \(error.localizedDescription)")
                 return
             }
-            strongSelf.dismiss(animated: true, completion: nil)
+            strongSelf.dismiss(animated: true) {
+                strongSelf.delegate?.authenticationComplete()
+            }
         }
 
     }
