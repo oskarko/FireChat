@@ -16,6 +16,9 @@ class MessageCell: UICollectionViewCell {
         didSet { configure() }
     }
 
+    var bubbleLeftAnchor: NSLayoutConstraint!
+    var bubbleRightAnchor: NSLayoutConstraint!
+
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -47,14 +50,22 @@ class MessageCell: UICollectionViewCell {
         super.init(frame: frame)
 
         addSubview(profileImageView)
-        profileImageView.anchor(left: leftAnchor, bottom: bottomAnchor, paddingLeft: 8, paddingBottom: -4)
+        profileImageView.anchor(left: leftAnchor,
+                                bottom: bottomAnchor,
+                                paddingLeft: 8,
+                                paddingBottom: -4)
         profileImageView.setDimensions(height: 32, width: 32)
         profileImageView.layer.cornerRadius = 32 / 2
 
         addSubview(bubbleContainer)
-        bubbleContainer.anchor(top: topAnchor, left: profileImageView.rightAnchor, paddingLeft: 12)
+        bubbleContainer.anchor(top: topAnchor)
         bubbleContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
         bubbleContainer.layer.cornerRadius = 12
+        bubbleLeftAnchor = bubbleContainer.leftAnchor.constraint(equalTo: profileImageView.rightAnchor,
+                                                                 constant: 12)
+        bubbleLeftAnchor.isActive = false
+        bubbleRightAnchor = bubbleContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: -12)
+        bubbleRightAnchor.isActive = false
 
         bubbleContainer.addSubview(textView)
         textView.anchor(top: bubbleContainer.topAnchor,
@@ -80,5 +91,9 @@ class MessageCell: UICollectionViewCell {
         bubbleContainer.backgroundColor = viewModel.messageBackgroundColor
         textView.textColor = viewModel.messageTextColor
         textView.text = message.text
+
+        bubbleLeftAnchor.isActive = viewModel.leftAnchorActive
+        bubbleRightAnchor.isActive = viewModel.rightAnchorActive
+        profileImageView.isHidden = viewModel.shouldHideProfileImage
     }
 }
