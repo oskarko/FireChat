@@ -145,6 +145,7 @@ class RegistrationController: UIViewController {
             strongSelf.showLoader(false)
 
             if let error = error {
+                strongSelf.showError(error.localizedDescription)
                 print("DEBUG: \(error.localizedDescription)")
                 return
             }

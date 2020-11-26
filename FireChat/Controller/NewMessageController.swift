@@ -49,9 +49,11 @@ class NewMessageController: UITableViewController {
     // MARK: - Helpers
 
     private func fetchUsers() {
+        showLoader(true)
         viewModel.fetchUsers { [weak self] users in
             guard let strongSelf = self else { return }
 
+            strongSelf.showLoader(false)
             strongSelf.users = users
         }
     }

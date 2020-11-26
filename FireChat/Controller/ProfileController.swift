@@ -51,8 +51,11 @@ class ProfileController: UITableViewController {
     // MARK: - API
 
     private func fetchUser() {
+        showLoader(true)
         viewModel.fetchUser() { [weak self] user in
             guard let strongSelf = self else { return }
+
+            strongSelf.showLoader(false)
             strongSelf.user = user
         }
     }

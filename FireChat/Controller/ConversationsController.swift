@@ -74,6 +74,7 @@ class ConversationsController: UIViewController {
     }
 
     private func fetchConversations() {
+        showLoader(true)
         viewModel.fetchConversations { [weak self] conversations in
             guard let strongSelf = self else { return }
 
@@ -82,6 +83,7 @@ class ConversationsController: UIViewController {
                 strongSelf.conversationDictionary[message.chatPartnerId] = conversation
             }
             strongSelf.conversations = Array(strongSelf.conversationDictionary.values)
+            strongSelf.showLoader(false)
             strongSelf.tableView.reloadData()
         }
     }

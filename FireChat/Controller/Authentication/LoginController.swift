@@ -115,6 +115,7 @@ class LoginController: UIViewController {
             strongSelf.showLoader(false)
 
             if let error = error {
+                strongSelf.showError(error.localizedDescription)
                 print("DEBUG: Failed to login with error \(error.localizedDescription)")
                 return
             }
