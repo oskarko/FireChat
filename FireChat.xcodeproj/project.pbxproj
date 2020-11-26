@@ -34,6 +34,7 @@
 		E2706A00256FA90A0011A6BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27069FF256FA90A0011A6BC /* Constants.swift */; };
 		E2706A03256FAC080011A6BC /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2706A02256FAC080011A6BC /* NewMessageViewModel.swift */; };
 		E2706A06256FACAA0011A6BC /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2706A05256FACAA0011A6BC /* ChatViewModel.swift */; };
+		E2706A21256FBBA20011A6BC /* ConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2706A20256FBBA20011A6BC /* ConversationsViewModel.swift */; };
 		E28D6C91256E3220008C35C6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D6C90256E3220008C35C6 /* LoginViewModel.swift */; };
 		E28D6C94256E4D96008C35C6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D6C93256E4D96008C35C6 /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		E27069FF256FA90A0011A6BC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E2706A02256FAC080011A6BC /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		E2706A05256FACAA0011A6BC /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		E2706A20256FBBA20011A6BC /* ConversationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewModel.swift; sourceTree = "<group>"; };
 		E28D6C90256E3220008C35C6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E28D6C93256E4D96008C35C6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 				E27069FC256F88830011A6BC /* MessageViewModel.swift */,
 				E2706A02256FAC080011A6BC /* NewMessageViewModel.swift */,
 				E2706A05256FACAA0011A6BC /* ChatViewModel.swift */,
+				E2706A20256FBBA20011A6BC /* ConversationsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				E2623FE0256E922A00CAD244 /* UserCell.swift in Sources */,
 				E231D4F8256CDA1400347073 /* SceneDelegate.swift in Sources */,
 				E2706A06256FACAA0011A6BC /* ChatViewModel.swift in Sources */,
+				E2706A21256FBBA20011A6BC /* ConversationsViewModel.swift in Sources */,
 				E2623FE3256E970500CAD244 /* User.swift in Sources */,
 				E2623FE6256E977400CAD244 /* Service.swift in Sources */,
 				E27069F7256F81CA0011A6BC /* MessageCell.swift in Sources */,

@@ -14,6 +14,10 @@ class ConversationsController: UIViewController {
 
     // MARK: - Properties
 
+    private let viewModel = ConversationsViewModel()
+
+    private let conversations = [Conversation]()
+
     private let tableView = UITableView()
 
     private let newMessageButton: UIButton = {
@@ -55,7 +59,15 @@ class ConversationsController: UIViewController {
         if Auth.auth().currentUser?.uid == nil {
             presentLoginScreen()
         } else {
+            fetchConversations()
+        }
+    }
 
+    private func fetchConversations() {
+        viewModel.fetchConversations { [weak self] conversations in
+            guard let strongSelf = self else { return }
+            strongSelf.conversations = conversations
+            strongSelf.tableView.reloadData()
         }
     }
 
@@ -123,12 +135,12 @@ extension ConversationsController: UITableViewDelegate {
 
 extension ConversationsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return conversations.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = "Test Cell"
+        cell.textLabel?.text = conversations[indexPath.row].message.text
 
         return cell
     }
