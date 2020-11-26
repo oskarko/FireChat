@@ -122,7 +122,6 @@ class LoginController: UIViewController {
     private func configureUI() {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-        view.backgroundColor = .systemPurple
 
         configureGradientLayer()
 
