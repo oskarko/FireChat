@@ -161,10 +161,13 @@ extension ConversationsController: UITableViewDataSource {
     }
 }
 
+// MARK: - NewMessageControllerDelegate
+
 extension ConversationsController: NewMessageControllerDelegate {
     func controller(_ controller: NewMessageController, wantsToStartChatWith user: User) {
-        controller.dismiss(animated: true, completion: nil)
-        showChatController(forUser: user)
+        dismiss(animated: true) {
+            self.showChatController(forUser: user)
+        }
     }
 }
 
