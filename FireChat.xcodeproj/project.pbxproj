@@ -35,6 +35,8 @@
 		E2706A03256FAC080011A6BC /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2706A02256FAC080011A6BC /* NewMessageViewModel.swift */; };
 		E2706A06256FACAA0011A6BC /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2706A05256FACAA0011A6BC /* ChatViewModel.swift */; };
 		E2706A21256FBBA20011A6BC /* ConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2706A20256FBBA20011A6BC /* ConversationsViewModel.swift */; };
+		E2706A24256FC0FE0011A6BC /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2706A23256FC0FE0011A6BC /* ConversationCell.swift */; };
+		E2706A27256FC3A70011A6BC /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2706A26256FC3A70011A6BC /* ConversationViewModel.swift */; };
 		E28D6C91256E3220008C35C6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D6C90256E3220008C35C6 /* LoginViewModel.swift */; };
 		E28D6C94256E4D96008C35C6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D6C93256E4D96008C35C6 /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,8 @@
 		E2706A02256FAC080011A6BC /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		E2706A05256FACAA0011A6BC /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		E2706A20256FBBA20011A6BC /* ConversationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewModel.swift; sourceTree = "<group>"; };
+		E2706A23256FC0FE0011A6BC /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		E2706A26256FC3A70011A6BC /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		E28D6C90256E3220008C35C6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E28D6C93256E4D96008C35C6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +177,7 @@
 				E2706A02256FAC080011A6BC /* NewMessageViewModel.swift */,
 				E2706A05256FACAA0011A6BC /* ChatViewModel.swift */,
 				E2706A20256FBBA20011A6BC /* ConversationsViewModel.swift */,
+				E2706A26256FC3A70011A6BC /* ConversationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 				E2623FDF256E922A00CAD244 /* UserCell.swift */,
 				E2624003256EA48400CAD244 /* CustomInputAccessoryView.swift */,
 				E27069F6256F81CA0011A6BC /* MessageCell.swift */,
+				E2706A23256FC0FE0011A6BC /* ConversationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 				E27069FD256F88830011A6BC /* MessageViewModel.swift in Sources */,
 				E231D4F6256CDA1400347073 /* AppDelegate.swift in Sources */,
 				E231D512256CDA8300347073 /* ConversationsController.swift in Sources */,
+				E2706A24256FC0FE0011A6BC /* ConversationCell.swift in Sources */,
 				E2623FE0256E922A00CAD244 /* UserCell.swift in Sources */,
 				E231D4F8256CDA1400347073 /* SceneDelegate.swift in Sources */,
 				E2706A06256FACAA0011A6BC /* ChatViewModel.swift in Sources */,
@@ -355,6 +362,7 @@
 				E2623FE3256E970500CAD244 /* User.swift in Sources */,
 				E2623FE6256E977400CAD244 /* Service.swift in Sources */,
 				E27069F7256F81CA0011A6BC /* MessageCell.swift in Sources */,
+				E2706A27256FC3A70011A6BC /* ConversationViewModel.swift in Sources */,
 				E231D51B256D03CD00347073 /* RegistrationController.swift in Sources */,
 				E231D517256D03BF00347073 /* LoginController.swift in Sources */,
 				E2706A03256FAC080011A6BC /* NewMessageViewModel.swift in Sources */,
