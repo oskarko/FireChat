@@ -95,10 +95,14 @@ extension ChatController: CustomInputAccessoryViewDelegate {
     func inputView(_ inputView: CustomInputAccessoryView, wantsToSend message: String) {
         inputView.messageInputTextView.text = nil
 
-        fromCurrentUser.toggle()
+        Service.shared.uploadMessage(message, to: user) { error in
+            if let error = error {
+                print("DEBUG: Error sending message \(error.localizedDescription)")
+                return
+            }
 
-        let message = Message(text: message, isFromCurrentUser: fromCurrentUser)
-        messages.append(message)
-        collectionView.reloadData()
+            inputView.messageInputTextView.text = nil
+            self.collectionView.reloadData()
+        }
     }
 }
