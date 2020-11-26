@@ -11,9 +11,15 @@ import UIKit
 
 private let reuseIdentifier = "ProfileCell"
 
+protocol ProfileControllerDelegate: class {
+    func handleLogout()
+}
+
 class ProfileController: UITableViewController {
 
     // MARK: - Properties
+
+    weak var delegate: ProfileControllerDelegate?
 
     private var viewModel = ProfileViewModel()
 
@@ -62,6 +68,7 @@ class ProfileController: UITableViewController {
         tableView.rowHeight = 64
         tableView.backgroundColor = .systemGroupedBackground
 
+        footerView.delegate = self
         footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 100)
         tableView.tableFooterView = footerView
     }
@@ -71,7 +78,14 @@ class ProfileController: UITableViewController {
 
 extension ProfileController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        guard let viewModel = ProfileCellViewModel(rawValue: indexPath.row) else { return }
+
+        switch viewModel {
+        case .accountInfo:
+            print("DEBUG: Handle action for Account info...")
+        case .settings:
+            print("DEBUG: Handle action for Settings...")
+        }
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -91,13 +105,35 @@ extension ProfileController {
         let viewModel = ProfileCellViewModel(rawValue: indexPath.row)
         cell.viewModel = viewModel
         cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
 
         return cell
     }
 }
 
+// MARK: - ProfileHeaderDelegate
+
 extension ProfileController: ProfileHeaderDelegate {
     func dismissController() {
         dismiss(animated:true, completion: nil)
+    }
+}
+
+// MARK: - ProfileFooterDelegate
+
+extension ProfileController: ProfileFooterdelegate {
+    func handleLogout() {
+        let alert = UIAlertController(title: nil,
+                                      message: "Are you sure you want to logout?",
+                                      preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
+            self.dismiss(animated:true) {
+                self.delegate?.handleLogout()
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
     }
 }
