@@ -16,7 +16,7 @@ class ConversationsController: UIViewController {
 
     private let viewModel = ConversationsViewModel()
 
-    private let conversations = [Conversation]()
+    private var conversations = [Conversation]()
 
     private let tableView = UITableView()
 
