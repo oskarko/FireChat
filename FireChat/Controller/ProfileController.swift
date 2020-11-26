@@ -6,6 +6,7 @@
 //  Copyright © 2020 Little Monster. All rights reserved.
 //
 
+import Firebase
 import UIKit
 
 private let reuseIdentifier = "ProfileCell"
@@ -14,8 +15,13 @@ class ProfileController: UITableViewController {
 
     // MARK: - Properties
 
-    private lazy var headerView = ProfileHeader(frame: .init(x: 0,
-                                                             y: 0,
+    private var viewModel = ProfileViewModel()
+
+    private var user: User? {
+        didSet { headerView.user = user }
+    }
+
+    private lazy var headerView = ProfileHeader(frame: .init(x: 0, y: 0,
                                                              width: view.frame.width,
                                                              height: 380))
 
@@ -24,6 +30,7 @@ class ProfileController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchUser()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +42,13 @@ class ProfileController: UITableViewController {
     // MARK: - Selectors
 
     // MARK: - API
+
+    private func fetchUser() {
+        viewModel.fetchUser() { [weak self] user in
+            guard let strongSelf = self else { return }
+            strongSelf.user = user
+        }
+    }
     
     // MARK: - Helpers
 
@@ -42,7 +56,8 @@ class ProfileController: UITableViewController {
         tableView.backgroundColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableHeaderView = headerView
-        //tableView.tableFooterView = UIView()
+        headerView.delegate = self
+        tableView.tableFooterView = UIView()
         tableView.contentInsetAdjustmentBehavior = .never
 
     }
@@ -67,5 +82,11 @@ extension ProfileController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
         return cell
+    }
+}
+
+extension ProfileController: ProfileHeaderDelegate {
+    func dismissController() {
+        dismiss(animated:true, completion: nil)
     }
 }
