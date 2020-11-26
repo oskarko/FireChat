@@ -138,14 +138,16 @@ class RegistrationController: UIViewController {
 
         showLoader(true, withText: "Signing You Up")
 
-        AuthService.shared.createUser(withCredentials: credentials) { [weak self] error in
-            self?.showLoader(false)
+        viewModel.createUser(withCredentials: credentials) { [weak self] error in
+            guard let strongSelf = self else { return }
+
+            strongSelf.showLoader(false)
 
             if let error = error {
                 print("DEBUG: \(error.localizedDescription)")
                 return
             }
-            self?.dismiss(animated: true, completion: nil)
+            strongSelf.dismiss(animated: true, completion: nil)
         }
     }
 

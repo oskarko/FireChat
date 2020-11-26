@@ -19,6 +19,8 @@ class ChatController: UICollectionViewController {
     private var messages = [Message]()
     var fromCurrentUser = false
 
+    var viewModel = ChatViewModel()
+
     private lazy var customInputView: CustomInputAccessoryView = {
         let iv = CustomInputAccessoryView(frame: CGRect(x: 0,
                                                         y: 0,
@@ -95,14 +97,15 @@ extension ChatController: CustomInputAccessoryViewDelegate {
     func inputView(_ inputView: CustomInputAccessoryView, wantsToSend message: String) {
         inputView.messageInputTextView.text = nil
 
-        Service.shared.uploadMessage(message, to: user) { error in
+        viewModel.uploadMessage(message, to: user) { [weak self] error in
+            guard let strongSelf = self else { return }
+
             if let error = error {
                 print("DEBUG: Error sending message \(error.localizedDescription)")
                 return
             }
 
             inputView.messageInputTextView.text = nil
-            self.collectionView.reloadData()
         }
     }
 }

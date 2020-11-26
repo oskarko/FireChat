@@ -6,7 +6,7 @@
 //  Copyright © 2020 Little Monster. All rights reserved.
 //
 
-import Foundation
+import Firebase
 
 protocol AuthenticationProtocol {
     var formIsValid: Bool { get }
@@ -18,5 +18,12 @@ struct LoginViewModel: AuthenticationProtocol {
 
     var formIsValid: Bool {
         return (email ?? "") != "" && (password ?? "") != ""
+    }
+
+    func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?) {
+
+        AuthService.shared.logUserIn(withEmail: email,
+                                     password: password,
+                                     completion: completion)
     }
 }

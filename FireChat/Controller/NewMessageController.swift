@@ -22,6 +22,8 @@ class NewMessageController: UITableViewController {
         didSet { tableView.reloadData() }
     }
 
+    var viewModel = NewMessageViewModel()
+
     weak var delegate: NewMessageControllerDelegate?
 
     // MARK: - Lifecycle
@@ -36,8 +38,10 @@ class NewMessageController: UITableViewController {
     // MARK: - Helpers
 
     private func fetchUsers() {
-        Service.shared.fetchUsers { users in
-            self.users = users
+        viewModel.fetchUsers { [weak self] users in
+            guard let strongSelf = self else { return }
+
+            strongSelf.users = users
         }
     }
 

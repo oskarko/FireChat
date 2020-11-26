@@ -6,7 +6,7 @@
 //  Copyright © 2020 Little Monster. All rights reserved.
 //
 
-import Foundation
+import Firebase
 
 struct RegistrationViewModel: AuthenticationProtocol {
     var email: String?
@@ -17,5 +17,11 @@ struct RegistrationViewModel: AuthenticationProtocol {
     var formIsValid: Bool {
         return (email ?? "") != "" && (fullName ?? "") != ""
             && (username ?? "") != "" && (password ?? "") != ""
+    }
+
+    func createUser(withCredentials credentials: RegistrationCredentials,
+                    completion:@escaping(Error?) -> Void) {
+
+        AuthService.shared.createUser(withCredentials: credentials, completion: completion)
     }
 }
