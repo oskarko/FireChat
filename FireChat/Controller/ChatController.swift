@@ -52,6 +52,16 @@ class ChatController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchMessages()
+    }
+
+    // MARK: - API
+
+    private func fetchMessages() {
+        viewModel.fetchMessages(forUser: user) { [weak self] messages in
+            self?.messages = messages
+            self?.collectionView.reloadData()
+        }
     }
 
     // MARK: - Helpers
@@ -73,7 +83,7 @@ extension ChatController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MessageCell
         cell.message = messages[indexPath.row]
-        
+        cell.message?.user = user
         return cell
     }
 }
@@ -95,7 +105,6 @@ extension ChatController: UICollectionViewDelegateFlowLayout {
 
 extension ChatController: CustomInputAccessoryViewDelegate {
     func inputView(_ inputView: CustomInputAccessoryView, wantsToSend message: String) {
-        inputView.messageInputTextView.text = nil
 
         viewModel.uploadMessage(message, to: user) { [weak self] error in
             guard let strongSelf = self else { return }
@@ -105,7 +114,7 @@ extension ChatController: CustomInputAccessoryViewDelegate {
                 return
             }
 
-            inputView.messageInputTextView.text = nil
+            inputView.clearMessageText()
         }
     }
 }

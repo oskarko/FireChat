@@ -89,11 +89,13 @@ class MessageCell: UICollectionViewCell {
         let viewModel = MessageViewModel(message: message)
 
         bubbleContainer.backgroundColor = viewModel.messageBackgroundColor
-        textView.textColor = viewModel.messageTextColor
-        textView.text = message.text
-
         bubbleLeftAnchor.isActive = viewModel.leftAnchorActive
         bubbleRightAnchor.isActive = viewModel.rightAnchorActive
+
+        textView.textColor = viewModel.messageTextColor
+        textView.text = message.text
+        
         profileImageView.isHidden = viewModel.shouldHideProfileImage
+        profileImageView.sd_setImage(with: viewModel.porfileImageUrl)
     }
 }

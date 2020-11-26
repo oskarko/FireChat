@@ -32,6 +32,11 @@ struct MessageViewModel {
         return message.isFromCurrentUser
     }
 
+    var porfileImageUrl: URL? {
+        guard let user = message.user else { return nil }
+        return URL(string: user.profileImageUrl)
+    }
+
     init(message: Message) {
         self.message = message
     }
