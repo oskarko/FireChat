@@ -58,7 +58,7 @@ class MessageCell: UICollectionViewCell {
         profileImageView.layer.cornerRadius = 32 / 2
 
         addSubview(bubbleContainer)
-        bubbleContainer.anchor(top: topAnchor)
+        bubbleContainer.anchor(top: topAnchor, bottom: bottomAnchor)
         bubbleContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
         bubbleContainer.layer.cornerRadius = 12
         bubbleLeftAnchor = bubbleContainer.leftAnchor.constraint(equalTo: profileImageView.rightAnchor,
